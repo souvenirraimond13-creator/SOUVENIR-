@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>S - Social Network</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f0f2f5;
+      color: #1c1e21;
+    }
+
+    header {
+      height: 60px;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 25px;
+      box-shadow: 0 1px 5px #ccc;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-size: 32px;
+      font-weight: bold;
+      color: #1877f2;
+    }
+
+    .search {
+      width: 300px;
+      padding: 12px 18px;
+      border: none;
+      border-radius: 25px;
+      background: #f0f2f5;
+      outline: none;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 25px auto;
+      display: grid;
+      grid-template-columns: 230px 1fr 230px;
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 18px;
+      margin-bottom: 15px;
+      box-shadow: 0 1px 3px #ddd;
+    }
+
+    .profile {
+      text-align: center;
+    }
+
+    .avatar {
+      width: 70px;
+      height: 70px;
+      margin: auto auto 10px;
+      border-radius: 50%;
+      background: #1877f2;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      font-weight: bold;
+    }
+
+    .menu div {
+      padding: 13px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .menu div:hover {
+      background: #f0f2f5;
+    }
+
+    textarea {
+      width: 100%;
+      height: 90px;
+      margin-top: 15px;
+      padding: 15px;
+      border: none;
+      border-radius: 10px;
+      background: #f0f2f5;
+      resize: none;
+      outline: none;
+      font-size: 15px;
+    }
+
+    .post-btn {
+      width: 100%;
+      margin-top: 10px;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #1877f2;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .post-btn:hover {
+      background: #166fe5;
+    }
+
+    .post-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .small-avatar {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: #42b72a;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+
+    .post-text {
+      margin: 15px 0;
+      line-height: 1.5;
+    }
+
+    .actions {
+      display: flex;
+      border-top: 1px solid #ddd;
+      padding-top: 10px;
+      gap: 8px;
+    }
+
+    .actions button {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      background: white;
+      border-radius: 7px;
+      cursor: pointer;
+    }
+
+    .actions button:hover {
+      background: #f0f2f5;
+    }
+
+    .liked {
+      color: #1877f2;
+      font-weight: bold;
+    }
+
+    .friend {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 15px;
+    }
+
+    .add-btn {
+      margin-top: 5px;
+      border: none;
+      background: #1877f2;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 850px) {
+      .container {
+        grid-template-columns: 1fr;
+        margin: 15px;
+      }
+
+      .left,
+      .right {
+        display: none;
+      }
+
+      .search {
+        width: 180px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">S</div>
+
+  <input
+    class="search"
+    type="text"
+    placeholder="Search S..."
+  >
+
+  <div>🔔 💬 👤</div>
+</header>
+
+<div class="container">
+
+  <!-- LEFT MENU -->
+  <aside class="left">
+
+    <div class="card profile">
+      <div class="avatar">S</div>
+      <h3>Souvenir Raimond</h3>
+      <p>Welcome to S</p>
+    </div>
+
+    <div class="card menu">
+      <div>🏠 Home</div>
+      <div>👤 Profile</div>
+      <div>👥 Friends</div>
+      <div>💬 Messages</div>
+      <div>🔔 Notifications</div>
+      <div>⚙️ Settings</div>
+    </div>
+
+  </aside>
+
+  <!-- POSTS -->
+  <main>
+
+    <div class="card">
+      <h3>Create a post</h3>
+
+      <textarea
+        id="postText"
+        placeholder="What's on your mind?"
+      ></textarea>
+
+      <button class="post-btn" onclick="createPost()">
+        Post
+      </button>
+    </div>
+
+    <div id="posts">
+
+      <div class="card">
+
+        <div class="post-header">
+          <div class="small-avatar">S</div>
+
+          <div>
+            <strong>Souvenir Raimond</strong>
+            <br>
+            <small>Just now</small>
+          </div>
+        </div>
+
+        <p class="post-text">
+          Welcome to <strong>S</strong>! 🎉
+          Our new social network is starting here.
+        </p>
+
+        <div class="actions">
+          <button onclick="likePost(this)">
+            👍 Like
+          </button>
+
+          <button onclick="commentPost()">
+            💬 Comment
+          </button>
+
+          <button onclick="sharePost()">
+            ↗️ Share
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- RIGHT SIDE -->
+  <aside class="right">
+
+    <div class="card">
+
+      <h3>People you may know</h3>
+
+      <div class="friend">
+        <div class="small-avatar">J</div>
+
+        <div>
+          <strong>John</strong>
+          <br>
+          <button class="add-btn">
+            + Add
+          </button>
+        </div>
+      </div>
+
+      <div class="friend">
+        <div class="small-avatar">M</div>
+
+        <div>
+          <strong>Mike</strong>
+          <br>
+          <button class="add-btn">
+            + Add
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </aside>
+
+</div>
+
+<script>
+
+function likePost(button) {
+
+  button.classList.toggle("liked");
+
+  if (button.classList.contains("liked")) {
+    button.innerHTML = "👍 Liked";
+  } else {
+    button.innerHTML = "👍 Like";
+  }
+
+}
+
+function commentPost() {
+
+  const comment = prompt("Write your comment:");
+
+  if (comment) {
+    alert("Comment added: " + comment);
+  }
+
+}
+
+function sharePost() {
+
+  alert("Post shared!");
+
+}
+
+function createPost() {
+
+  const text = document
+    .getElementById("postText")
+    .value
+    .trim();
+
+  if (text === "") {
+    alert("Please write something first.");
+    return;
+  }
+
+  const posts = document.getElementById("posts");
+
+  const post = document.createElement("div");
+
+  post.className = "card";
+
+  post.innerHTML = `
+    <div class="post-header">
+      <div class="small-avatar">S</div>
+
+      <div>
+        <strong>Souvenir Raimond</strong>
+        <br>
+        <small>Just now</small>
+      </div>
+    </div>
+
+    <p class="post-text">${text}</p>
+
+    <div class="actions">
+      <button onclick="likePost(this)">
+        👍 Like
+      </button>
+
+      <button onclick="commentPost()">
+        💬 Comment
+      </button>
+
+      <button onclick="sharePost()">
+        ↗️ Share
+      </button>
+    </div>
+  `;
+
+  posts.prepend(post);
+
+  document.getElementById("postText").value = "";
+
+}
+
+</script>
+
+</body>
+</html>
