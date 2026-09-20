@@ -214,7 +214,11 @@
     placeholder="Search S..."
   >
 
-  <div>🔔 💬 👤</div>
+  <div class="header-icons">
+  <button onclick="showNotifications()">🔔</button>
+  <button onclick="showMessages()">💬</button>
+  <button onclick="showProfile()">👤</button>
+</div>
 </header>
 
 <div class="container">
@@ -412,8 +416,17 @@ function createPost() {
   document.getElementById("postText").value = "";
 
 }
+function showNotifications() {
+  alert("🔔 You have no new notifications.");
+}
 
-</script>
+function showMessages() {
+  alert("💬 Messages will appear here.");
+}
+
+function showProfile() {
+  alert("👤 Opening your profile...");
+}</script>
 
 </body>
 </html>
