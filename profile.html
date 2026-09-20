@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>S - Profile</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f0f2f5;
+      color: #1c1e21;
+    }
+
+    header {
+      height: 60px;
+      background: white;
+      display: flex;
+      align-items: center;
+      padding: 0 25px;
+      gap: 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+    }
+
+    .logo {
+      width: 42px;
+      height: 42px;
+      background: #1877f2;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    .back {
+      text-decoration: none;
+      color: #1877f2;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 25px auto;
+    }
+
+    .profile-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    }
+
+    .cover {
+      height: 230px;
+      background: linear-gradient(135deg, #1877f2, #6a5acd);
+    }
+
+    .profile-info {
+      padding: 0 30px 25px;
+      text-align: center;
+    }
+
+    .avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: #1877f2;
+      color: white;
+      border: 6px solid white;
+      margin: -70px auto 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 70px;
+      font-weight: bold;
+    }
+
+    .name {
+      font-size: 30px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .bio {
+      color: #65676b;
+      margin-bottom: 20px;
+    }
+
+    .edit-btn {
+      border: none;
+      background: #1877f2;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 45px;
+      padding-top: 25px;
+      margin-top: 25px;
+      border-top: 1px solid #ddd;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 21px;
+    }
+
+    .stat span {
+      color: #65676b;
+      font-size: 14px;
+    }
+
+    .section {
+      background: white;
+      margin-top: 20px;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    .section h2 {
+      margin-bottom: 18px;
+    }
+
+    .about-item {
+      padding: 10px 0;
+      color: #555;
+    }
+
+    .post {
+      border-top: 1px solid #ddd;
+      padding-top: 18px;
+    }
+
+    .post-title {
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        margin: 10px;
+      }
+
+      .cover {
+        height: 170px;
+      }
+
+      .stats {
+        gap: 20px;
+      }
+
+      .profile-info {
+        padding-left: 15px;
+        padding-right: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">S</div>
+    <a class="back" href="index.html">← Back to Home</a>
+  </header>
+
+  <div class="container">
+
+    <div class="profile-card">
+
+      <div class="cover"></div>
+
+      <div class="profile-info">
+
+        <div class="avatar">S</div>
+
+        <div class="name">Souvenir Raimond</div>
+
+        <div class="bio">
+          Welcome to my S profile 🚀
+        </div>
+
+        <button class="edit-btn" onclick="editProfile()">
+          Edit Profile
+        </button>
+
+        <div class="stats">
+
+          <div class="stat">
+            <strong>0</strong>
+            <span>Posts</span>
+          </div>
+
+          <div class="stat">
+            <strong>0</strong>
+            <span>Friends</span>
+          </div>
+
+          <div class="stat">
+            <strong>0</strong>
+            <span>Following</span>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div class="section">
+
+      <h2>About</h2>
+
+      <div class="about-item">🌍 Living in Uganda</div>
+      <div class="about-item">💻 Building S</div>
+      <div class="about-item">🚀 Welcome to my profile</div>
+
+    </div>
+
+    <div class="section">
+
+      <h2>Posts</h2>
+
+      <div class="post">
+
+        <div class="post-title">
+          Souvenir Raimond
+        </div>
+
+        <p>
+          Welcome to my profile on S! 🎉
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <script>
+    function editProfile() {
+      alert("Profile editing will be available soon.");
+    }
+  </script>
+
+</body>
+</html>
