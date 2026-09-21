@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Edit Profile - S</title>
 
   <style>
@@ -15,6 +16,7 @@
 
     body {
       background: #f0f2f5;
+      color: #1c1e21;
     }
 
     header {
@@ -24,7 +26,7 @@
       align-items: center;
       padding: 0 25px;
       gap: 20px;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+      box-shadow: 0 1px 5px #ccc;
     }
 
     .logo {
@@ -47,16 +49,48 @@
     }
 
     .container {
-      max-width: 600px;
+      max-width: 650px;
       margin: 30px auto;
+      padding: 20px;
+    }
+
+    .card {
       background: white;
       padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+      border-radius: 15px;
+      box-shadow: 0 2px 10px #ccc;
     }
 
     h1 {
+      margin-bottom: 8px;
+      font-size: 28px;
+    }
+
+    .subtitle {
+      color: #65676b;
       margin-bottom: 25px;
+    }
+
+    .photo-preview {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: #1877f2;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 55px;
+      font-weight: bold;
+      margin: 0 auto 25px;
+      overflow: hidden;
+      border: 5px solid #eee;
+    }
+
+    .photo-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     label {
@@ -68,11 +102,20 @@
 
     input,
     textarea {
+      display: block;
       width: 100%;
-      padding: 12px;
-      border: 1px solid #ccc;
+      padding: 13px;
+      border: 1px solid #ccd0d5;
       border-radius: 8px;
       font-size: 16px;
+      background: white;
+      color: #222;
+      outline: none;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: #1877f2;
     }
 
     textarea {
@@ -80,25 +123,56 @@
       resize: vertical;
     }
 
+    .buttons {
+      display: flex;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
     .save {
-      margin-top: 25px;
-      width: 100%;
+      flex: 1;
       padding: 13px;
       background: #1877f2;
       color: white;
       border: none;
       border-radius: 8px;
-      font-size: 17px;
+      font-size: 16px;
       font-weight: bold;
       cursor: pointer;
     }
 
+    .save:hover {
+      background: #166fe5;
+    }
+
     .cancel {
-      display: block;
+      flex: 1;
+      padding: 13px;
+      background: #e4e6eb;
+      color: #1c1e21;
+      border-radius: 8px;
       text-align: center;
-      margin-top: 15px;
-      color: #1877f2;
       text-decoration: none;
+      font-weight: bold;
+    }
+
+    .cancel:hover {
+      background: #d8dadf;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        margin: 15px auto;
+        padding: 10px;
+      }
+
+      .card {
+        padding: 20px;
+      }
+
+      .buttons {
+        flex-direction: column;
+      }
     }
   </style>
 </head>
@@ -107,52 +181,203 @@
 
   <header>
     <div class="logo">S</div>
-    <a class="back" href="profile.html">← Back to Profile</a>
+
+    <a class="back" href="profile.html">
+      ← Back to Profile
+    </a>
   </header>
+
 
   <div class="container">
 
-    <h1>Edit Profile</h1>
+    <div class="card">
 
-    <label for="name">Name</label>
-    <input
-      type="text"
-      id="name"
-      value="Souvenir Raimond"
-    >
+      <h1>Edit your profile</h1>
 
-    <label for="bio">Bio</label>
-    <textarea id="bio">Welcome to my S profile 🚀</textarea>
+      <p class="subtitle">
+        Update your information on S
+      </p>
 
-    <label for="photo">Profile Photo URL</label>
-    <input
-      type="text"
-      id="photo"
-      placeholder="Paste image URL here"
-    >
 
-    <button class="save" onclick="saveProfile()">
-      Save Changes
-    </button>
+      <div class="photo-preview" id="photoPreview">
+        S
+      </div>
 
-    <a class="cancel" href="profile.html">
-      Cancel
-    </a>
+
+      <label for="photo">
+        🖼️ Profile Photo URL
+      </label>
+
+      <input
+        type="text"
+        id="photo"
+        placeholder="Paste your image URL here"
+        oninput="previewPhoto()"
+      >
+
+
+      <label for="name">
+        👤 Full Name
+      </label>
+
+      <input
+        type="text"
+        id="name"
+        value="Souvenir Raimond"
+        placeholder="Enter your full name"
+      >
+
+
+      <label for="bio">
+        ✍️ Bio
+      </label>
+
+      <textarea
+        id="bio"
+        placeholder="Tell people about yourself"
+      >Welcome to my S profile 🚀</textarea>
+
+
+      <label for="location">
+        📍 Location
+      </label>
+
+      <input
+        type="text"
+        id="location"
+        placeholder="Example: Kampala, Uganda"
+      >
+
+
+      <label for="work">
+        💼 Work
+      </label>
+
+      <input
+        type="text"
+        id="work"
+        placeholder="Example: Web Developer"
+      >
+
+
+      <label for="website">
+        🔗 Website
+      </label>
+
+      <input
+        type="text"
+        id="website"
+        placeholder="https://example.com"
+      >
+
+
+      <div class="buttons">
+
+        <button
+          class="save"
+          onclick="saveProfile()"
+        >
+          💾 Save Changes
+        </button>
+
+        <a
+          class="cancel"
+          href="profile.html"
+        >
+          ↩️ Cancel
+        </a>
+
+      </div>
+
+    </div>
 
   </div>
 
+
   <script>
-    function saveProfile() {
-      const name = document.getElementById("name").value;
-      const bio = document.getElementById("bio").value;
 
-      localStorage.setItem("profileName", name);
-      localStorage.setItem("profileBio", bio);
+    function previewPhoto() {
 
-      alert("Profile saved successfully!");
+      const photo =
+        document.getElementById("photo").value;
 
-      window.location.href = "profile.html";
+      const preview =
+        document.getElementById("photoPreview");
+
+      if (photo.trim() !== "") {
+
+        preview.innerHTML =
+          '<img src="' +
+          photo +
+          '" onerror="this.parentElement.innerHTML=\'S\'">';
+
+      } else {
+
+        preview.innerHTML = "S";
+
+      }
+
     }
+
+
+    function saveProfile() {
+
+      const name =
+        document.getElementById("name").value;
+
+      const bio =
+        document.getElementById("bio").value;
+
+      const location =
+        document.getElementById("location").value;
+
+      const work =
+        document.getElementById("work").value;
+
+      const website =
+        document.getElementById("website").value;
+
+      const photo =
+        document.getElementById("photo").value;
+
+
+      localStorage.setItem(
+        "profileName",
+        name
+      );
+
+      localStorage.setItem(
+        "profileBio",
+        bio
+      );
+
+      localStorage.setItem(
+        "profileLocation",
+        location
+      );
+
+      localStorage.setItem(
+        "profileWork",
+        work
+      );
+
+      localStorage.setItem(
+        "profileWebsite",
+        website
+      );
+
+      localStorage.setItem(
+        "profilePhoto",
+        photo
+      );
+
+
+      alert("Profile saved successfully! 🎉");
+
+      window.location.href =
+        "profile.html";
+    }
+
   </script>
 
 </body>
