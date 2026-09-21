@@ -11,10 +11,10 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: Arial, sans-serif;
     }
 
     body {
+      font-family: Arial, sans-serif;
       background: #f0f2f5;
       color: #1c1e21;
     }
@@ -24,8 +24,8 @@
       background: white;
       display: flex;
       align-items: center;
-      padding: 0 25px;
       gap: 20px;
+      padding: 0 25px;
       box-shadow: 0 1px 5px #ccc;
     }
 
@@ -49,9 +49,9 @@
     }
 
     .container {
-      max-width: 650px;
+      width: 90%;
+      max-width: 600px;
       margin: 30px auto;
-      padding: 20px;
     }
 
     .card {
@@ -62,41 +62,13 @@
     }
 
     h1 {
-      margin-bottom: 8px;
-      font-size: 28px;
-    }
-
-    .subtitle {
-      color: #65676b;
       margin-bottom: 25px;
-    }
-
-    .photo-preview {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      background: #1877f2;
-      color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 55px;
-      font-weight: bold;
-      margin: 0 auto 25px;
-      overflow: hidden;
-      border: 5px solid #eee;
-    }
-
-    .photo-preview img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
     }
 
     label {
       display: block;
       font-weight: bold;
-      margin-top: 18px;
+      margin-top: 20px;
       margin-bottom: 8px;
     }
 
@@ -104,75 +76,47 @@
     textarea {
       display: block;
       width: 100%;
-      padding: 13px;
-      border: 1px solid #ccd0d5;
+      min-height: 45px;
+      padding: 12px;
+      border: 2px solid #ccc;
       border-radius: 8px;
-      font-size: 16px;
       background: white;
       color: #222;
-      outline: none;
+      font-size: 16px;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
     }
 
     input:focus,
     textarea:focus {
       border-color: #1877f2;
-    }
-
-    textarea {
-      height: 120px;
-      resize: vertical;
-    }
-
-    .buttons {
-      display: flex;
-      gap: 12px;
-      margin-top: 28px;
+      outline: none;
     }
 
     .save {
-      flex: 1;
-      padding: 13px;
+      display: block;
+      width: 100%;
+      margin-top: 25px;
+      padding: 14px;
       background: #1877f2;
       color: white;
       border: none;
       border-radius: 8px;
-      font-size: 16px;
+      font-size: 17px;
       font-weight: bold;
       cursor: pointer;
     }
 
-    .save:hover {
-      background: #166fe5;
-    }
-
     .cancel {
-      flex: 1;
-      padding: 13px;
-      background: #e4e6eb;
-      color: #1c1e21;
-      border-radius: 8px;
+      display: block;
       text-align: center;
+      margin-top: 15px;
+      color: #1877f2;
       text-decoration: none;
       font-weight: bold;
-    }
-
-    .cancel:hover {
-      background: #d8dadf;
-    }
-
-    @media (max-width: 600px) {
-      .container {
-        margin: 15px auto;
-        padding: 10px;
-      }
-
-      .card {
-        padding: 20px;
-      }
-
-      .buttons {
-        flex-direction: column;
-      }
     }
   </style>
 </head>
@@ -187,139 +131,51 @@
     </a>
   </header>
 
-
   <div class="container">
 
     <div class="card">
 
-      <h1>Edit your profile</h1>
+      <h1>Edit Profile</h1>
 
-      <p class="subtitle">
-        Update your information on S
-      </p>
-
-
-      <div class="photo-preview" id="photoPreview">
-        S
-      </div>
-
-
-      <label for="photo">
-        🖼️ Profile Photo URL
-      </label>
-
-      <input
-        type="text"
-        id="photo"
-        placeholder="Paste your image URL here"
-        oninput="previewPhoto()"
-      >
-
-
-      <label for="name">
-        👤 Full Name
-      </label>
+      <label for="name">Name</label>
 
       <input
         type="text"
         id="name"
         value="Souvenir Raimond"
-        placeholder="Enter your full name"
       >
 
+      <label for="bio">Bio</label>
 
-      <label for="bio">
-        ✍️ Bio
-      </label>
+      <textarea id="bio">Welcome to my S profile 🚀</textarea>
 
-      <textarea
-        id="bio"
-        placeholder="Tell people about yourself"
-      >Welcome to my S profile 🚀</textarea>
-
-
-      <label for="location">
-        📍 Location
-      </label>
+      <label for="photo">Profile Photo URL</label>
 
       <input
         type="text"
-        id="location"
-        placeholder="Example: Kampala, Uganda"
+        id="photo"
+        placeholder="Paste image URL here"
       >
 
-
-      <label for="work">
-        💼 Work
-      </label>
-
-      <input
-        type="text"
-        id="work"
-        placeholder="Example: Web Developer"
+      <button
+        class="save"
+        onclick="saveProfile()"
       >
+        Save Changes
+      </button>
 
-
-      <label for="website">
-        🔗 Website
-      </label>
-
-      <input
-        type="text"
-        id="website"
-        placeholder="https://example.com"
+      <a
+        class="cancel"
+        href="profile.html"
       >
-
-
-      <div class="buttons">
-
-        <button
-          class="save"
-          onclick="saveProfile()"
-        >
-          💾 Save Changes
-        </button>
-
-        <a
-          class="cancel"
-          href="profile.html"
-        >
-          ↩️ Cancel
-        </a>
-
-      </div>
+        Cancel
+      </a>
 
     </div>
 
   </div>
 
-
   <script>
-
-    function previewPhoto() {
-
-      const photo =
-        document.getElementById("photo").value;
-
-      const preview =
-        document.getElementById("photoPreview");
-
-      if (photo.trim() !== "") {
-
-        preview.innerHTML =
-          '<img src="' +
-          photo +
-          '" onerror="this.parentElement.innerHTML=\'S\'">';
-
-      } else {
-
-        preview.innerHTML = "S";
-
-      }
-
-    }
-
-
     function saveProfile() {
 
       const name =
@@ -328,18 +184,8 @@
       const bio =
         document.getElementById("bio").value;
 
-      const location =
-        document.getElementById("location").value;
-
-      const work =
-        document.getElementById("work").value;
-
-      const website =
-        document.getElementById("website").value;
-
       const photo =
         document.getElementById("photo").value;
-
 
       localStorage.setItem(
         "profileName",
@@ -352,32 +198,15 @@
       );
 
       localStorage.setItem(
-        "profileLocation",
-        location
-      );
-
-      localStorage.setItem(
-        "profileWork",
-        work
-      );
-
-      localStorage.setItem(
-        "profileWebsite",
-        website
-      );
-
-      localStorage.setItem(
         "profilePhoto",
         photo
       );
 
-
-      alert("Profile saved successfully! 🎉");
+      alert("Profile saved successfully!");
 
       window.location.href =
         "profile.html";
     }
-
   </script>
 
 </body>
